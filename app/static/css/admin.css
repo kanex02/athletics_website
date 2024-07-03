@@ -1,0 +1,435 @@
+/*CSS FOR ADMIN PAGE*/
+
+#scrolltotop {
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    background-color: rgb(0, 166, 81);
+    color: rgb(255, 255, 255);
+    border: 0;
+    border-bottom:rgb(0, 166, 81) 1px solid;
+    border-right:rgb(0, 166, 81) 1px solid;
+    transition: all 0.3s ease;
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    z-index: 999;
+    border-bottom-right-radius: 0.5rem;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 3rem;
+    padding: 0em 1em;
+    max-width: 32.9999%;
+}
+
+#scrolltotop::before {
+    content: 'TOGGLE FILTERS'
+}
+
+#scrolltotop:hover {
+    background-color: rgb(0, 180, 30);
+}
+
+.hide {
+    position: absolute;
+    visibility: hidden;
+}
+
+#errors {
+    margin-top: 0.5rem;
+    margin-bottom: 0%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#toppanel {
+    padding: 2em 2em 1em 2em;
+    display: flex;
+    align-items: center;
+    margin:0;
+}
+
+#logosmall {
+    visibility: hidden;
+    position: absolute;
+}
+
+#row2 {
+    padding: 1em 1em 0em 1em;
+    display: block;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+#firstrow {
+    font-family: 'Raleway';
+}
+
+#firstrow th {
+    background-color: rgb(245, 245, 245);
+}
+
+td, th {
+    /*border-left: none;
+    border-right: none;*/
+    border: 0.25rem solid white;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    overflow: none;
+    max-width: 5rem;
+    min-width: 5rem;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+td p {
+    margin: 0%;
+}
+
+#student_table {
+    width: 100%;
+    border-left: none;
+    border-right: none;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    background-color: rgb(245, 245, 245);
+    border: 0;
+  }
+
+#student_table .idnumber {
+    display: block;
+}
+
+.submitinput, .deleteinput {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 2.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+#delete_form, #submit_form {
+    margin: auto;
+    padding: 0;
+}
+
+.student_table_wrapper {
+    overflow: scroll;
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    max-height: 100%;
+    transition: all 0.5s ease;
+    flex: 1 1 auto;
+}
+
+#student_table th {
+    position: sticky;
+    top: 0;
+}
+
+#student_table th:first-child {
+    position:sticky;
+    left:0;
+    background-color: white;
+}
+
+#student_table td:first-child {
+    text-align: center;
+    min-width: 5rem;
+    max-width: 5rem;
+    position: sticky;
+    position: -webkit-sticky; 
+    left: 0;   
+    background-color: white;
+    margin: 0;
+    z-index: 5;
+}
+
+#student_table td:nth-child(2) {
+    padding-right: 1.5em;
+    max-width: 14rem;
+    position: sticky;
+    position: -webkit-sticky; 
+    left:4.9rem;
+    background-image: linear-gradient(to right, rgb(255, 255, 255) , rgb(235, 235, 235), rgb(224, 224, 224));
+    border: 4px rgb(255, 255, 255) solid;
+    border-right: hidden;
+    display: table-cell;
+    border-collapse: separate;
+    border-spacing: 0;
+    z-index: 5;
+    background-color: white;
+    white-space: nowrap;
+    min-width: 8rem;
+}
+
+#student_table td:nth-child(2) p {
+    overflow: auto;
+}
+
+#student_table td:nth-child(2) p::-webkit-scrollbar {
+    max-height: 0.35rem;
+}
+
+#student_table tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+#student_table tr {
+    height: 2.5rem;
+    border-bottom: solid 4px rgb(255, 255, 255);
+}
+
+#searchwrapper {
+    width: 100%;
+}
+
+#nocando {
+    background-color: rgb(106 0 122 / 56%);
+}
+
+#top {
+    /*background: linear-gradient(135deg, #87bfff 5%, #ffffff 5%, #ffffff 15%, #87bfff 15%, #5edfbc 100%);*/
+    background-color: rgb(182, 215, 233);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(0.25rem);
+    transition: all 0.5s ease, max-height 0.5s ease-in-out;
+    max-height: 50%;
+    padding-top: 2rem;
+    flex: 0 0 auto;
+    overflow: hidden;
+}
+
+#toggle:checked ~ #top {
+    padding: 0px;
+    max-height: 0%;
+}
+
+#searchbox {
+    float: right;
+    border-spacing: 0.4rem;
+    border: rgb(0, 166, 81) 1px solid;
+    border-radius: 0.4rem;
+    padding: 1rem 2rem 0.5rem;
+    font-family: 'Raleway', sans-serif;
+    white-space: nowrap;
+}
+
+#searchbox input {
+    width: 100%;
+    border: rgb(0, 166, 81) 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#submit, #clear {
+    border: rgb(0, 166, 81) 1px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.2rem;
+    background-color: rgb(0, 166, 81);
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#submit:hover, #clear:hover{
+    cursor: pointer;
+    background-color: rgb(0, 180, 30);
+}
+
+#heading {
+    font-size: 4rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: rgb(0, 117, 57);
+    text-align: center;
+    margin-top: 3%;
+    white-space: nowrap;
+}
+
+#pagebox {
+    table-layout: fixed;
+    padding-left: 0.6rem;
+    line-height: 130%;
+    overflow: hidden;
+    min-height: 3em;
+    max-height: 4em;
+    float: left;
+    max-width: 60%;
+    white-space: nowrap;
+}
+
+#pagebox a {
+    text-decoration: none;
+}
+
+#pagebox a:active {
+    color: aqua;
+}
+
+#row2 #logoutbutton {
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+}
+
+#row2 #logoutbox {
+    margin-bottom: 20px; 
+    max-width: 40%; 
+    min-width: 0%;
+    float: right;
+}
+
+.left-half {
+    width: 49%;
+    float: left;
+}
+
+.right-half {
+    width: 49%;
+    float: right;
+}
+
+@media (min-width: 601px) {
+.w3-col.m3, .w3-quarter {
+    min-width: 300px;
+}}
+
+@media (max-width: 85em) {
+#heading {
+    font-size: 3.5rem;
+}}
+
+@media (max-width: 78em) {
+#heading {
+    font-size: 3em;
+}}
+
+@media (max-width: 70em) {
+#logo {
+    position: absolute;
+    visibility: hidden;
+}
+
+#logosmall {
+    position: relative;
+    visibility: visible;
+    height: 2.8rem;
+    margin: 0.2rem 0rem;
+}
+
+#logobox {
+    text-align: right;
+    width: auto;
+    float: right;
+    width: 100%;
+}
+
+#toppanel {
+    display: block;
+    padding-top: 0px;
+}
+
+#top {
+    padding-top: 0px;
+}
+
+#row2 {
+    padding-top: 0px;
+}
+
+#top #heading, #top #searchbox {
+    width: 100%;
+}
+
+#scrolltotop::before {
+    content: 'TOGGLE';
+}}
+
+@media (max-width: 55em) {
+#top #heading, #searchbox {
+    width: 100%;
+}
+
+#student_table td:first-child {
+    visibility: hidden;
+    position: absolute;
+}
+
+#student_table td:nth-child(2) {
+    left: 0px;
+}
+
+#scrolltotop::before {
+    content: '';
+}
+
+#top #heading {
+    font-size: 3rem;
+}}
+
+@media (max-width: 34em) {
+#top #heading {
+    font-size: 2rem;
+}
+
+#top {
+    max-height: 100%;
+}
+
+
+
+#submit, #clear, #searchbox input, #searchbox p {
+    font-size: 0.8rem;
+}
+
+#clear {
+    margin-top: 0.5rem;
+}
+
+.left-half, .right-half {
+    width: 100%;
+}
+
+#row2 #pagebox, #row2 #logoutbox {
+    max-width: 100%;
+    width: 100%;
+}}
+
+@media (max-height: 44em) {
+#top {
+    max-height: 100%;
+}}
+
+
+@media (max-width: 600px) {
+    #student_table td:nth-child(2) {
+        max-width: 100px;
+    }
+
+    #student_table td:nth-child(2) p {
+        overflow: hidden;
+    }
+}

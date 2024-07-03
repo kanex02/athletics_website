@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html id = 'admin'>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap' rel='stylesheet'>
+        <link rel='stylesheet' href='../static/css/w3.css'>
+        <link rel='stylesheet' href='../static/css/global.css'>
+        <link rel='stylesheet' href='../static/css/admin.css'>
+        <link rel='stylesheet' media='print' href='../static/css/print.css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src='../static/js/admin.js'></script>
+        <title>Athletics Sign Up</title>
+        <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
+    </head>
+
+    <body onload='lowd();' onscroll="seceroll();">
+        <!-- <button id='scrolltotop' onclick="toggleTop()">TOGGLE HEADER<img src="../static/images/arrows.svg" style="height: 60%; margin: 0 10px"></button> -->
+        <label id='scrolltotop' for="toggle"><img src="../static/images/arrows.svg" style="height: 50%; margin: 0 10px"></label>
+        <input type="checkbox" id="toggle" class='hide' {% if collapsed %}checked{% endif %}>
+        <!--Logo and search form-->
+        <div id='top'>
+            <div class='w3-cell-row w3-panel' id='toppanel'>
+                <div id='logobox' class='w3-col m3'>
+                    <img src='../static/images/BHSlogo.png' style='max-height: 10vw;' id='logo'>
+                    <img src='../static/images/BHSlogoSmall.png' id='logosmall'>
+                </div>
+
+                <h2 class='no-margin w3-col m6' id = 'heading'>ATHLETICS SIGN UP</h2>
+
+                <div class='w3-col m3' id='searchbox' style='overflow: auto;''>
+                    <div style='overflow: auto;'>
+                        <form action='' method='post' novalidate style='overflow: auto; margin: 0;'>
+                            {{ form.hidden_tag() }}
+                            <div class='left-half'>
+                                {{ form.firstname() }}
+                            </div>
+                            <div class='right-half'>
+                                {{ form.surname() }}
+                            </div>
+                            <div class='left-half'>
+                                {{ form.studentid() }}
+                            </div>
+                            <div class='right-half'>
+                                {{ form.formclass() }}
+                            </div>
+                            <div style='width:100%; overflow: auto;'><button onclick="resetScroll()" class='left-half' id="submit" name="submit" type="submit" value="Search">Filter</button>
+                            <button onclick="resetScroll(); clearSesh();" class='right-half' id = "clear"><a href="{{ url_for('clear') }}" style='text-decoration: none; display:block; height:100%; width: 100%;'>Clear Filters</a></button></div>
+                        </form>
+                    </div>
+                    <!--Print errors-->
+                    <p id='errors'>
+                        {% for error in form.firstname.errors %}
+                            <span style='color: red;'>{{ error }}</span>
+                        {% endfor %}
+                        {% for error in form.surname.errors %}
+                            <span style='color: red;'>{{ error }}</span>
+                        {% endfor %}
+                        {% for error in form.studentid.errors %}
+                            <span style='color: red;'>{{ error }}</span>
+                        {% endfor %}
+                        {% for error in form.formclass.errors %}
+                            <span style='color: red;'>{{ error }}</span>
+                        {% endfor %}
+                    </p>
+                </div>
+                
+            </div>
+
+            <!--Print page links and logout-->
+            <div class='w3-cell-row' id='row2'>
+                <div id='pagebox' class='w3-col m3'>
+                    <p style='float:left;' class='no-margin'>PAGE:</p>
+                    <div class='w3-cell' style='width: 100%;'>
+                        <div style='bottom:0;'>
+                            <!-- Print links for first 9 pages if the current page is less than 5 -->
+                            {% if currpage < 5 %}
+                                {% for i in range([pages, 9]|min) %}
+                                    {% if i+1==currpage %}
+                                        <a href="{{ url_for('admin', page=i+1) }}" style='margin-left: 0.4em; float: left; color: rgb(185, 119, 19); text-decoration: none; font-weight: bold; font-size: 150%;'>{{ i+1 }}</a>
+                                    {% else %}
+                                        <a href="{{ url_for('admin', page=i+1) }}" style='margin-left: 0.4em; float: left;'>{{ i+1 }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if pages > 9 %}
+                                    <a style='display:inline-block;'>...</a>
+                                {% endif %}
+                            {% else %}
+                            <!-- Print 4 page links before and after the current page -->
+                                {% for i in range(currpage-4, currpage) %}
+                                    <a href="{{ url_for('admin', page=i) }}" style='margin-left: 0.4em; float: left;'>{{ i }}</a>
+                                {% endfor %}
+                                <a href="{{ url_for('admin', page=currpage) }}" style='margin-left: 0.4em; float: left; color: rgb(185, 119, 19); text-decoration: none; font-weight: bold; font-size: 150%;'>{{ currpage }}</a>
+                                {% for i in range(currpage+1, [pages, currpage+5]|min) %}
+                                    <a href="{{ url_for('admin', page=i) }}" style='margin-left: 0.4em; float: left;'>{{ i }}</a>
+                                {% endfor %}
+                                {% if pages > currpage+5 %}
+                                    <a style='display:inline-block;'>...</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div> 
+                </div>
+
+                <div class='w3-col m3 w3-center' id='logoutbox'>
+                    <a href="{{ url_for('logout') }}" id='logoutbutton' onclick="clearSesh()"><button style='padding: 0em 1em; border: rgb(0, 166, 81) 1px solid;'>LOGOUT</button></a>
+                </div>
+            </div>
+        </div>
+
+        <!--Create the table of students and events-->
+        <div class = 'student_table_wrapper w3-content w3-container'>
+            <table id = 'student_table'>
+                <colgroup>
+                    <col span="2" class='idnumber'>
+                    <col class='studentname'>
+                    <col>
+                    <col>
+                </colgroup>
+                <!--First row-->
+                <tr id = 'firstrow'>                    
+                    <td><p>&nbsp;</p></td>
+                    <td style="padding-right: 0.5rem;">
+                        <button id="printButton" style="float: right;" onclick="printDiv()">Print</button>
+                    </td>
+                    {% for event in events %}
+                        <th>{{event.event}}</th>
+                    {% endfor %}
+
+                    {% if events|length < 20 %}
+                        {% for i in range(20 - events|length) %}
+                            <td></td>
+                        {% endfor %}
+                    {% endif %}
+
+                </tr>
+
+                <!--In each row, have the student ID and name, and checkboxes for each event if they can enter-->
+                <!--If student can't enter event, have a empty cell-->
+                {% for student in data %}
+                    <tr>
+                        <td><p>{{student.studentid}}</p></td>
+                        <td><p>{{student.firstname}} {{student.surname}}</p></td>
+                        {% for event in events %}
+                            {% if check_available(event, student) %}
+                                <td style='border: 4px solid white;' id='{{ student.id }}/{{ event.id }}'>
+                                    {% if event in student.events %}
+                                        <form action='/delete' method = 'post' id = 'delete_form'>
+                                            <input type='hidden' name='stdntid' value='{{ student.id }}'>
+                                            <input type='hidden' name='eventid' value='{{ event.id }}'>
+                                            <button onclick="scrollSave('{{ student.id }}/{{ event.id }}')" type='submit' name='input' class='deleteinput'><img src='../static/images/checked.svg' height='100%'></button>
+                                        </form>
+                                    {% else %}
+                                        <form action='/enter' method = 'post' id = 'submit_form'>
+                                            <input type='hidden' name='stdntid' value='{{ student.id }}'>
+                                            <input type='hidden' name='eventid' value='{{ event.id }}'>
+                                            <button onclick="scrollSave('{{ student.id }}/{{ event.id }}')" type='submit' name='input' class='submitinput'>&nbsp;</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+
+                            {% else %}
+                                <td id='nocando'></td>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        
+                        {% if events|length < 20 %}
+                            {% for i in range(20 - events|length) %}
+                                <td>&nbsp;</td>
+                            {% endfor %}
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

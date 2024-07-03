@@ -1,0 +1,41 @@
+#student_table {
+    border-spacing: 1 !important;
+}
+
+td, th {
+    border: 1px black solid !important;
+    height: 61px !important;
+}
+
+h3 {
+    line-height: 17px;
+}
+
+#student_table td:nth-child(2) {
+    width: 250px !important;
+    max-width: 210px !important;
+}
+
+#student_table td:nth-child(2) p {
+    margin-left: 5px;
+}
+
+* {
+    font-size: 17px !important;
+}
+
+#printButton {
+    display: none;
+}
+
+#nocando {
+    background-color: gray !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact; 
+}
+
+@media print {
+    @page {
+        size: landscape;
+    }
+}

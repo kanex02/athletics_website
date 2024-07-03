@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 122 174" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <rect style="fill: rgb(255, 255, 255);" transform="matrix(0, 1, -1, 0, 96.445183, 45.484234)" x="34.516" y="-0.155" width="14" height="70" rx="7" ry="7"/>
+  <rect style="fill: rgb(255, 255, 255);" transform="matrix(0.638929, 0.769266, -0.757486, 0.653112, -34.577526, -187.702744)" x="205.089" y="45.834" width="13.942" height="81.508" rx="6.971" ry="6.971"/>
+  <rect style="fill: rgb(255, 255, 255);" transform="matrix(0.638929, -0.769266, 0.757487, 0.65311, -114.405792, 138.576782)" x="205.089" y="45.835" width="13.942" height="81.508" rx="7.03" ry="7.03" bx:origin="0.583588 0.044973"/>
+  <rect style="fill: rgb(255, 255, 255);" transform="matrix(-0.638929, -0.769266, 0.757486, -0.653112, 156.577881, 361.680511)" x="205.089" y="45.834" width="13.942" height="81.508" rx="6.971" ry="6.971"/>
+  <rect style="fill: rgb(255, 255, 255);" transform="matrix(-0.638929, 0.769266, -0.757487, -0.65311, 236.406158, 35.40099)" x="205.089" y="45.835" width="13.942" height="81.508" rx="7.03" ry="7.03" bx:origin="0.583588 0.044973"/>
+</svg>
