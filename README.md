@@ -14,6 +14,8 @@ To export data back into ZO-Sports, run `savedata.py`.
 
 ## Screenshots
 
+(For privacy, names have been covered with a red bar)
+
 ![image](https://github.com/kanex02/athletics_website/assets/87688497/9b10c36d-c2c4-49a0-87bf-6ea4a44973de)
 
 ![image](https://github.com/kanex02/athletics_website/assets/87688497/b6f4a186-bfd3-48b2-90cc-4a96eb478798)
